@@ -30,6 +30,12 @@ def load_mnist_data(dim):
     else:
         raise ValueError("dim must be either 1 or 2")
 
+    # shuffle
+    indices = np.arange(len(X_selected))
+    np.random.shuffle(indices)
+    X_selected = X_selected[indices]
+    y_selected = y_selected[indices]
+
     # split
     X_train, y_train = X_selected[:800], y_selected[:800]
     X_test, y_test = X_selected[800:], y_selected[800:]
